@@ -2,14 +2,17 @@
 // generate random chosen number for game
 let chosenNumber = Math.floor(Math.random() * 20) + 1;
 
-// create variable for game Score
-let score = document.querySelector(".score").textContent;
+// create variable for game guessNumber
+let guessNumber = document.querySelector(".guess-number").textContent;
 
 // create game on variable to allow user interaction
 let gameOn = true;
 
 // create set object to contain all unique guesses
 let guesses = new Set();
+
+// create high score variable
+let highScore = document.querySelector(".highscore").textContent;
 
 // Check user guess against chosen number
 document.querySelector(".check").addEventListener("click", function() {
@@ -45,11 +48,16 @@ document.querySelector(".check").addEventListener("click", function() {
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
     document.querySelector(".number").textContent = chosenNumber;
+
+    if (highScore === "--" || guessNumber < highScore) {
+      highScore = guessNumber;
+      document.querySelector(".highscore").textContent = highScore;
+    }
   }
 
-  if (!correct) score--;
+  if (!correct) guessNumber++;
 
-  if (score === 0) {
+  if (guessNumber === 10) {
     gameOn = false;
     response = "GAME OVER!";
     document.querySelector("body").style.backgroundColor = "red";
@@ -58,7 +66,7 @@ document.querySelector(".check").addEventListener("click", function() {
   if (!guesses.has(guess)) guesses.add(guess);
 
   document.querySelector(".message").textContent = response;
-  document.querySelector(".score").textContent = score;
+  document.querySelector(".guess-number").textContent = guessNumber;
 });
 
 
@@ -69,11 +77,11 @@ document.querySelector(".again").addEventListener("click", function() {
 
   gameOn = true;
   chosenNumber = Math.floor(Math.random() * 20) + 1;
-  score = 20;
+  guessNumber = 1;
   guesses = new Set();
 
   document.querySelector("body").style.backgroundColor = "#222";
-  document.querySelector(".score").textContent = score;
+  document.querySelector(".guess-number").textContent = guessNumber;
   document.querySelector(".number").style.width = "15rem";
   document.querySelector(".number").textContent = "?";
   document.querySelector(".message").textContent = "Start guessing...";
