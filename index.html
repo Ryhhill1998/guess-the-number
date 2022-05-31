@@ -7,24 +7,28 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/styles.css">
   <title>Guess My Number!</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
 </head>
 
 <body>
   <header>
     <h1>Guess My Number!</h1>
     <p class="between">(Between 1 and 20)</p>
-    <button class="btn again">Again!</button>
+    <button class="btn replay">replay <i class="fa-solid fa-reply"></i></button>
     <div class="number">?</div>
   </header>
   <main>
     <div class="left">
       <input type="number" class="guess">
-      <button class="btn check">Check!</button>
+      <p>
+        <button class="btn submit">Go <i class="fa-solid fa-right-to-bracket"></i></button>
+        <button class="btn delete">Del <i class="fa-solid fa-ban"></i></button>
+      </p>
     </div>
     <div class="right">
       <p class="message">Start guessing...</p>
       <p class="label-score">
-        💯 Guess: <span class="guess-number">1</span>
+        💯 Guesses: <span class="guess-number">0</span>
       </p>
       <p class="label-highscore">
         🥇 Highscore: <span class="highscore">--</span>
